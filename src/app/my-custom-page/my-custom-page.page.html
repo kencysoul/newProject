@@ -1,0 +1,26 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      myCustomPage
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">myCustomPage</ion-title>
+    </ion-toolbar>
+  </ion-header> 
+
+  <div id="container">
+    <strong>This Activity will guide you into an another page with an ID</strong>
+    <br>
+    1. The "Go to the Custom Page with ID by link" button will redirect you to a specific Custom Page with ID via link that is set-up in the button <br>
+    2. The "Go to the Custom Page with ID by event" button will redirect you to a specific Custom Page with ID using an Event Method. <br>
+    3. By modifying the ID in the url, the ID name of the page will change. <br>
+    <ion-button href = "my-custom-page/my-custom-page-with-id/1">Go to the Custom Page with ID by link</ion-button>
+    <ion-button (click) = "goToMyCustomPage()">Go to the Custom Page with ID by event</ion-button>
+  </div>
+
+</ion-content>
