@@ -13,7 +13,7 @@ export class LoginPage implements OnInit {
   isToastOpen: boolean = false;
   isValid: boolean = false;
   accounts: any[] =[
-    {user: "admin", pw: "admin"}, {user: "user1", pw: "user1"}
+    {username: "admin", password: "admin"}, {username: "user1", password: "user1"}
   ]
   constructor(private route : Router, private alertControl : AlertController, private toastControl : ToastController) { }
 
@@ -23,7 +23,7 @@ export class LoginPage implements OnInit {
   async login() {
     
     for (let i = 0; i < this.accounts.length; i++) {
-      if (this.accounts[i].user == this.user && this.accounts[i].pw == this.pw){
+      if (this.accounts[i].username == this.user && this.accounts[i].password == this.pw){
         this.isValid = true;
       }
     }
@@ -32,7 +32,14 @@ export class LoginPage implements OnInit {
         header: 'Login',
         subHeader: 'Status',
         message: 'Login Successful!',
-        buttons: ['OK']
+        buttons: [
+          {
+            text: 'OK',
+            handler: () => {
+              localStorage.setItem('user', this.user); //setting session variable
+            }
+          }
+        ]
       });
   
       await alert.present();
