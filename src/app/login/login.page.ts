@@ -37,7 +37,7 @@ export class LoginPage implements OnInit {
   
       await alert.present();
       setTimeout(() => {
-        this.route.navigate(['dashboard'])
+        this.route.navigate(['dashboard/home'])
       }, 1000) //delay
       
     } else {
