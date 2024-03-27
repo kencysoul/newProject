@@ -8,6 +8,9 @@ import { Component, OnInit } from '@angular/core';
 export class LoginPage implements OnInit {
   user: string = '';
   pw: string = '';
+  accounts: any[] =[
+    {user: "admin", pw: "admin"}, {user: "user1", pw: "user1"}
+  ]
   constructor() { }
 
   ngOnInit() {
