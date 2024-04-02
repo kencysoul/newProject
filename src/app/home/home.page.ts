@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from '../data.service';
 import { AlertController, ToastController } from '@ionic/angular';
+import { AuthenticationService } from '../authentication.service';
 
 @Component({
   selector: 'app-home',
@@ -12,14 +13,18 @@ export class HomePage implements OnInit{
   user: any;
   data: any;
 
-  constructor(private route : Router, private dataService : DataService,
-    private alertController : AlertController, private toastController : ToastController,
+  constructor(private route : Router,
+    private dataService : DataService,
+    private alertController : AlertController,
+    private toastController : ToastController,
+    private authenticationService : AuthenticationService
     ) {}
     volume = 100;
 
   ngOnInit(): void {
     this.user = localStorage.getItem('user');
     this.loadData();
+    this.authenticationService.authenticate = false;
   }
 
   async loadData() {

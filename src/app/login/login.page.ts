@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Route, Router } from '@angular/router';
 import { AlertController, ToastController } from '@ionic/angular';
+import { AuthenticationService } from '../authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -13,11 +14,22 @@ export class LoginPage implements OnInit {
   isToastOpen: boolean = false;
   isValid: boolean = false;
   accounts: any[] =[
-    {username: "admin", password: "admin"}, {username: "user1", password: "user1"}
+    {username: "admin", password: "admin"},
+    {username: "user1", password: "user1"}
   ]
-  constructor(private route : Router, private alertControl : AlertController, private toastControl : ToastController) { }
+  constructor(private route : Router,
+    private alertControl : AlertController,
+    private toastControl : ToastController,
+    private authenticationService : AuthenticationService) { }
 
   ngOnInit() {
+  }
+
+  verification() {
+    this.authenticationService.authenticate = true;
+    if (this.authenticationService.authenticate) {
+      console.log('verified')
+    }
   }
 
   async login() {
@@ -25,7 +37,11 @@ export class LoginPage implements OnInit {
     for (let i = 0; i < this.accounts.length; i++) {
       if (this.accounts[i].username == this.user && this.accounts[i].password == this.pw){
         this.isValid = true;
+        this.verification();
+        
       }
+
+      this.loginFailed(); //returns if no valid account found
     }
     if (this.isValid) {
       const alert = await this.alertControl.create({
@@ -47,8 +63,6 @@ export class LoginPage implements OnInit {
         this.route.navigate(['dashboard/home'])
       }, 1000) //delay
       
-    } else {
-      this.loginFailed()
     }
   }
 
