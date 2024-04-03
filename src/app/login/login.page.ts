@@ -41,7 +41,6 @@ export class LoginPage implements OnInit {
         
       }
     }
-    this.loginFailed(); //returns if no valid account found
 
     if (this.isValid) {
       const alert = await this.alertControl.create({
@@ -63,6 +62,8 @@ export class LoginPage implements OnInit {
         this.route.navigate(['dashboard/home'])
       }, 1000) //delay
       
+    } else {
+      this.loginFailed(); //returns if no valid account found
     }
   }
 
