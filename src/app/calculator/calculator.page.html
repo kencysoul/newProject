@@ -1,13 +1,35 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>calculator</ion-title>
+    <ion-title>Welcome {{user}}!</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">calculator</ion-title>
+      <ion-title size="large">Blank</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <ion-item>{{value}}</ion-item>
+  <!-- this displays the current values -->
+  <ion-item>History</ion-item>
+  <ion-item>{{allValue}}</ion-item>
+  <!-- this displays all things -->
+
+  <!-- <div *ngFor="let numbers of numbers">
+    <ion-button *ngFor="let num of numbers" (click)="pressEvent(num)" class="buttons">{{num}}</ion-button>
+  </div> -->
+
+  <div class="buttons">
+    <ion-grid>
+      <ion-row *ngFor="let row of numbers">
+        <ion-col *ngFor="let symbol of row">
+          <ion-button (click)="pressEvent(symbol)">{{ symbol }}</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <!-- numbers = array, numbers = array, ngFor = repeats it for every array -->
+  <!-- num = variable , numbers = array, ngFor = repeats it for every element in inner array -->
 </ion-content>

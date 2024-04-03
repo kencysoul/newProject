@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Route, Router } from '@angular/router';
 import { AlertController, ToastController } from '@ionic/angular';
+import { AuthenticationService } from '../authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -15,9 +16,19 @@ export class LoginPage implements OnInit {
   accounts: any[] =[
     {username: "admin", password: "admin"}, {username: "user1", password: "user1"}
   ]
-  constructor(private route : Router, private alertControl : AlertController, private toastControl : ToastController) { }
+  constructor(private route : Router,
+    private alertControl : AlertController,
+    private toastControl : ToastController,
+    private authenticationService : AuthenticationService) { }
 
   ngOnInit() {
+  }
+
+  verification() {
+    this.authenticationService.authenticate = true;
+    if (this.authenticationService.authenticate) {
+      console.log('verified')
+    }
   }
 
   async login() {

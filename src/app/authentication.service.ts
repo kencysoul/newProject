@@ -5,5 +5,12 @@ import { Injectable } from '@angular/core';
 })
 export class AuthenticationService {
 
+  authenticate = false;
+
   constructor() { }
+
+  canActivate() {
+    return this.authenticate;
+    console.log('pasok');
+  }
 }
