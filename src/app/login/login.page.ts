@@ -33,16 +33,15 @@ export class LoginPage implements OnInit {
   }
 
   async login() {
-    
+    this.isValid = false;
     for (let i = 0; i < this.accounts.length; i++) {
       if (this.accounts[i].username == this.user && this.accounts[i].password == this.pw){
         this.isValid = true;
         this.verification();
         
       }
-
-      this.loginFailed(); //returns if no valid account found
     }
+
     if (this.isValid) {
       const alert = await this.alertControl.create({
         header: 'Login',
@@ -63,6 +62,8 @@ export class LoginPage implements OnInit {
         this.route.navigate(['dashboard/home'])
       }, 1000) //delay
       
+    } else {
+      this.loginFailed(); //returns if no valid account found
     }
   }
 
