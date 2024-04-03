@@ -39,9 +39,10 @@ export class LoginPage implements OnInit {
         this.isValid = true;
         this.verification();
         
+      } else {
+        this.loginFailed(); //returns if no valid account found
       }
-
-      this.loginFailed(); //returns if no valid account found
+      
     }
     if (this.isValid) {
       const alert = await this.alertControl.create({
