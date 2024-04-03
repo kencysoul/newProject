@@ -14,7 +14,8 @@ export class LoginPage implements OnInit {
   isToastOpen: boolean = false;
   isValid: boolean = false;
   accounts: any[] =[
-    {username: "admin", password: "admin"}, {username: "user1", password: "user1"}
+    {username: "admin", password: "admin"},
+    {username: "user1", password: "user1"}
   ]
   constructor(private route : Router,
     private alertControl : AlertController,
@@ -36,7 +37,11 @@ export class LoginPage implements OnInit {
     for (let i = 0; i < this.accounts.length; i++) {
       if (this.accounts[i].username == this.user && this.accounts[i].password == this.pw){
         this.isValid = true;
+        this.verification();
+        
       }
+
+      this.loginFailed(); //returns if no valid account found
     }
     if (this.isValid) {
       const alert = await this.alertControl.create({
@@ -58,8 +63,6 @@ export class LoginPage implements OnInit {
         this.route.navigate(['dashboard/home'])
       }, 1000) //delay
       
-    } else {
-      this.loginFailed()
     }
   }
 
