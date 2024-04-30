@@ -5,7 +5,7 @@ name: Deploy to Firebase Hosting on merge
 on:
   push:
     branches:
-      - ACTIVITY-9-GALAPIA
+      - master
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
