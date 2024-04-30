@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "galapia-firebase"
-  }
+    "default": "galapia-act9-portfolio",
+    "ACTIVITY-9-GALAPIA": "galapia-act9-portfolio"
+  },
+  "targets": {},
+  "etags": {}
 }
