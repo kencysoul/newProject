@@ -1,7 +1,8 @@
 {
   "projects": {
     "default": "galapia-act9-portfolio",
-    "ACTIVITY-9-GALAPIA": "galapia-act9-portfolio"
+    "ACTIVITY-9-GALAPIA": "galapia-act9-portfolio",
+    "kency CRUD": "galapia-act10-crud"
   },
   "targets": {},
   "etags": {}

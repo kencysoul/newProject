@@ -30,7 +30,7 @@ export class LoginPage implements OnInit {
         this.authenticationService.setAuthentication(true);
         this.authenticationService.authenticate = true;
         this.presentAlert('Success', 'Welcome ' + user.displayName); //displays user name
-        this.router.navigate(['dashboard/home']);
+        this.router.navigate(['home']);
         console.log(this.authenticationService.authenticate);
       })
       .catch((error) => { //if has error, this will run

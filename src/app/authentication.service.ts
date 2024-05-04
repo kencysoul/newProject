@@ -1,13 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { initializeApp } from 'firebase/app';
 import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { getFirestore } from 'firebase/firestore';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
-  constructor(private router: Router) { }
+  constructor(private router: Router) { this.fetch(); }
   authenticate = false;
+  app : any;
+  firestore : any;
   setAuthentication(auth: boolean) {
     if (auth) {
       localStorage.setItem('isLoggedIn', 'true');
@@ -32,5 +37,10 @@ export class AuthenticationService {
   async signup(email: string, password: string) { //called when clicked signup
     const auth = getAuth();
     return await createUserWithEmailAndPassword(auth, email, password); //using email and password this will create a user
+  }
+
+  fetch() {
+    this.app = initializeApp(environment.firebaseConfig);
+    this.firestore = getFirestore(this.app);
   }
 }
