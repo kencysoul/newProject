@@ -62,7 +62,7 @@ export class HomePage {
     this.shoe();
   }
 
-  edit(Shoes: ishoes) { //editing data
+  edit(Shoes : ishoes) { //editing data
     this.Shoes = Shoes;
   }
 

@@ -56,12 +56,12 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let shoes of shoesList">
-            <td>{{shoes.name}}</td>
-            <td>{{shoes.brand}}</td>
-            <td>{{shoes.size}}</td>
-            <td>{{shoes.price}}</td>
-            <td>{{shoes.quantity}}</td>
+          <tr *ngFor="let Shoes of shoesList">
+            <td>{{Shoes.name}}</td>
+            <td>{{Shoes.brand}}</td>
+            <td>{{Shoes.size}}</td>
+            <td>{{Shoes.price}}</td>
+            <td>{{Shoes.quantity}}</td>
             <td><ion-button color="warning" (click)="edit(Shoes)" color="warning">EDIT</ion-button></td>
           </tr>
         </tbody>
